@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 
 import "./Footer.css";
-import logo from "../../assets/stackly.webp";
+import logo from "../../assets/stackly logo.webp";
 
 function Footer() {
   return (
