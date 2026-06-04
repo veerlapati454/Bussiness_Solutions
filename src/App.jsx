@@ -1,11 +1,12 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MainLayout from "./components/Layouts/MainLayout";
+import { HashRouter, Routes, Route } from "react-router-dom";
+
+import MainLayout from "./components/layouts/MainLayout";
 import Home from "./components/Home/Home";
 import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
 
         <Route element={<MainLayout />}>
@@ -15,7 +16,7 @@ function App() {
         <Route path="*" element={<NotFound />} />
 
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
