@@ -1,0 +1,47 @@
+.notfound {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background:
+  linear-gradient(
+  135deg,
+  #111827,
+  #1e293b
+  );
+
+  color: white;
+  text-align: center;
+}
+
+.notfound h1 {
+  font-size: 10rem;
+  font-weight: 900;
+  color: #2563eb;
+}
+
+.notfound h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.notfound p {
+  color: #94a3b8;
+  margin-bottom: 30px;
+}
+
+.notfound a {
+  text-decoration: none;
+
+  padding: 15px 35px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+}

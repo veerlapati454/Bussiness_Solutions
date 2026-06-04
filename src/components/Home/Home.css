@@ -1,0 +1,610 @@
+/* ==========================================================================
+   1. VARIABLES & DESIGN SYSTEM
+   ========================================================================== */
+:root {
+  --clr-primary: #2563eb;
+  --clr-primary-light: #dbeafe;
+  --clr-primary-dark: #1d4ed8;
+  --clr-heading: #0f172a;
+  --clr-body: #64748b;
+  --clr-bg-light: #f8fafc;
+  --clr-bg-surface: #ffffff;
+  
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  --shadow-sm: 0 4px 20px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 16px 40px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 30px 60px rgba(37, 99, 235, 0.16);
+
+  --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ==========================================================================
+   2. RESET & BASE STYLES
+   ========================================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--clr-bg-surface);
+  color: var(--clr-body);
+  line-height: 1.6;
+}
+
+main {
+  width: 100%;
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   3. REUSABLE COMPONENTS & UTILITIES
+   ========================================================================== */
+.section-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-title span {
+  color: var(--clr-primary);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.section-title h2 {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--clr-heading);
+  letter-spacing: -0.5px;
+}
+
+.tag {
+  display: inline-flex;
+  padding: 8px 20px;
+  border-radius: 100px;
+  background: var(--clr-primary-light);
+  color: var(--clr-primary);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+
+/* Buttons */
+.hero-buttons button,
+.cta button {
+  padding: 16px 36px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.hero-buttons button:first-child,
+.cta button {
+  background: var(--clr-primary);
+  color: var(--clr-bg-surface);
+}
+
+.hero-buttons button:first-child:hover,
+.cta button:hover {
+  background: var(--clr-primary-dark);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-buttons button.outline {
+  background: var(--clr-bg-surface);
+  color: var(--clr-heading);
+  border: 1px solid #e2e8f0;
+}
+
+.hero-buttons button.outline:hover {
+  background: var(--clr-bg-light);
+  border-color: #cbd5e1;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   4. HERO SECTION
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  padding: 160px 8% 120px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 60px;
+  background: linear-gradient(135deg, #f8fafc 0%, #edf2ff 100%);
+}
+
+.hero h1 {
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--clr-heading);
+  letter-spacing: -1.5px;
+}
+
+.hero h1 span {
+  display: block;
+  color: var(--clr-primary);
+}
+
+.hero p {
+  margin: 28px 0 40px;
+  font-size: clamp(1.05rem, 1.25vw, 1.25rem);
+  line-height: 1.8;
+  color: var(--clr-body);
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 500px; /* Enhanced presence */
+  border-radius: 32px;
+  object-fit: cover;
+  box-shadow: 0 35px 75px rgba(15, 23, 42, 0.15);
+  animation: premiumFloat 6s ease-in-out infinite;
+}
+
+@keyframes premiumFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+
+
+.companies {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.company {
+  background: var(--clr-bg-surface);
+  border-radius: 24px;
+  height: 160px; /* Made bigger to easily accommodate your real landscape images */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border: 1px solid #f1f5f9;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.company:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: #cbd5e1;
+}
+
+.company img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Keeps real imagery looking perfect inside the frame */
+  transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   6. SERVICES SECTION (FIXED FOR image_2.png)
+   ========================================================================== */
+.services {
+  padding: 140px 8%;
+  background: var(--clr-bg-light);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.service-card {
+  background: var(--clr-bg-surface);
+  border-radius: 28px;
+  text-align: left; /* Shifted to clean modern card alignment */
+  overflow: hidden; /* Clips image smoothly at card edge */
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+  border-color: #e2e8f0;
+}
+
+/* Converts tiny isolated circles into high-end cinematic display cards */
+.service-card img {
+  width: 100%;
+  height: 220px; 
+  object-fit: cover; 
+  margin: 0;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.service-card:hover img {
+  transform: scale(1.05);
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  color: var(--clr-heading);
+  margin: 28px 28px 12px;
+  font-weight: 700;
+}
+
+.service-card p {
+  color: var(--clr-body);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 28px 32px;
+}
+
+/* ==========================================================================
+   7. WHY US SECTION
+   ========================================================================== */
+.why-us {
+  padding: 140px 8%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.why-image {
+  overflow: hidden;
+  border-radius: 32px;
+  box-shadow: 0 30px 65px rgba(0, 0, 0, 0.08);
+}
+
+.why-image img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.why-image:hover img {
+  transform: scale(1.04);
+}
+
+.why-content span {
+  color: var(--clr-primary);
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+}
+
+.why-content h2 {
+  font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  color: var(--clr-heading);
+  margin: 16px 0 24px;
+}
+
+.why-content p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.why-content ul {
+  list-style: none;
+}
+
+.why-content li {
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--clr-heading);
+}
+
+.why-content li::before {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--clr-primary-light);
+  color: var(--clr-primary);
+  border-radius: 50%;
+  margin-right: 16px;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   8. FEATURES
+   ========================================================================== */
+.features {
+  padding: 140px 8%;
+  background: var(--clr-bg-light);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.feature-card {
+  background: var(--clr-bg-surface);
+  border-radius: 28px;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+  overflow: hidden;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.feature-card:hover img {
+  transform: scale(1.04);
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  color: var(--clr-heading);
+  margin: 28px 24px 12px;
+  font-weight: 700;
+}
+
+.feature-card p {
+  margin: 0 24px 28px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   9. PROCESS STEPS
+   ========================================================================== */
+.process {
+  padding: 140px 8%;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.step {
+  background: var(--clr-bg-surface);
+  padding: 45px 32px;
+  border-radius: 24px;
+  border: 1px solid #f1f5f9;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-smooth);
+}
+
+.step:hover {
+  border-color: rgba(37, 99, 235, 0.2);
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
+.step span {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--clr-primary);
+  display: block;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.step h3 {
+  font-size: 1.25rem;
+  color: var(--clr-heading);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   10. CALL TO ACTION (CTA)
+   ========================================================================== */
+.cta {
+  padding: 140px 8%;
+  text-align: center;
+  background: var(--clr-heading);
+  color: var(--clr-bg-surface);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cta::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 60%);
+  z-index: -1;
+}
+
+.cta h2 {
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.cta p {
+  max-width: 650px;
+  margin: 0 auto 45px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+/* CONTACT SECTION */
+
+.contact-section{
+  padding:120px 8%;
+  background:#ffffff;
+}
+
+.contact-form{
+  max-width:900px;
+  margin:60px auto 0;
+
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.contact-form input{
+  width:100%;
+  padding:20px 24px;
+
+  border:1px solid #dbe1ea;
+  border-radius:16px;
+
+  font-size:1rem;
+  outline:none;
+
+  transition:.3s;
+}
+
+.contact-form input:focus{
+  border-color:#2563eb;
+  box-shadow:0 0 0 4px rgba(37,99,235,.1);
+}
+
+.contact-form button{
+  padding:20px;
+
+  border:none;
+  border-radius:50px;
+
+  background:#ff6b00;
+  color:white;
+
+  font-size:1rem;
+  font-weight:600;
+
+  cursor:pointer;
+  transition:.3s;
+}
+
+.contact-form button:hover{
+  transform:translateY(-3px);
+
+  box-shadow:
+  0 15px 30px rgba(255,107,0,.25);
+}
+
+.success-message{
+  text-align:center;
+
+  color:#16a34a;
+  font-weight:600;
+
+  padding-top:10px;
+
+  animation:fadeIn .4s ease;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .contact-section{
+    padding:80px 6%;
+  }
+
+  .contact-form{
+    margin-top:40px;
+  }
+
+}
+/* ==========================================================================
+   11. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 992px) {
+  .hero, .why-us {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero { padding-top: 140px; }
+  
+  .hero-image img, .why-image img {
+    height: 380px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero-buttons, .why-content li {
+    justify-content: center;
+  }
+
+  .services-grid, .features-grid, .process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .companies, .services-grid, .features-grid, .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+}
