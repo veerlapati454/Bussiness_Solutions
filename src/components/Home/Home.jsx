@@ -16,6 +16,7 @@ import p10 from "../../assets/p10.webp";
 import p11 from "../../assets/p11.webp";
 import p12 from "../../assets/p12.webp";
 import p15 from "../../assets/p15.webp";
+import heroImage from "../../assets/hero.webp";
 
 function Home() {
   const navigate = useNavigate();
@@ -33,40 +34,41 @@ const handleSubmit = (e) => {
   return (
     <main>
 
-      {/* HERO */}
-      <section className="hero">
-        <div className="hero-content">
-          <span className="tag">BUSINESS SOLUTIONS</span>
+      <section
+  className="hero"
+  style={{
+    backgroundImage: `linear-gradient(rgba(15,23,42,0.75), rgba(15,23,42,0.75)), url(${p12})`,
+  }}
+>
+  <div className="hero-content">
+    <span className="tag">BUSINESS SOLUTIONS</span>
 
-          <h1>
-            Accelerate Your Business
-            <span> Growth Digitally</span>
-          </h1>
+    <h1>
+      Accelerate Your Business
+      <span> Growth Digitally</span>
+    </h1>
 
-          <p>
-            Empowering businesses through cloud technologies,
-            digital transformation, enterprise software,
-            and innovative growth strategies.
-          </p>
+    <p>
+      Empowering businesses through cloud technologies,
+      digital transformation, enterprise software,
+      and innovative growth strategies.
+    </p>
 
-          <div className="hero-buttons">
-            <button onClick={() => navigate("/start-project")}>
-              Start Project
-            </button>
+    <div className="hero-buttons">
+      <button onClick={() => navigate("/start-project")}>
+        Start Project
+      </button>
 
-            <button
-              className="outline"
-              onClick={() => navigate("/learn-more")}
-            >
-              Learn More
-            </button>
-          </div>
-        </div>
+      <button
+        className="outline"
+        onClick={() => navigate("/learn-more")}
+      >
+        Learn More
+      </button>
+    </div>
+  </div>
+</section>
 
-        <div className="hero-image">
-          <img src={p12} alt="Business" />
-        </div>
-      </section>
 
       
       {/* SERVICES */}
@@ -127,10 +129,10 @@ const handleSubmit = (e) => {
           </p>
 
           <ul>
-            <li>✔ Strategic Planning</li>
-            <li>✔ Scalable Solutions</li>
-            <li>✔ Innovation Driven</li>
-            <li>✔ Dedicated Support</li>
+            <li>Strategic Planning</li>
+            <li> Scalable Solutions</li>
+            <li> Innovation Driven</li>
+            <li> Dedicated Support</li>
           </ul>
         </div>
 
@@ -156,7 +158,7 @@ const handleSubmit = (e) => {
           </div>
 
           <div className="feature-card">
-            <img src={p1} alt="" />
+            <img src={p1  } alt="" />
             <h3>Data Intelligence</h3>
             <p>
               Transform data into actionable insights for

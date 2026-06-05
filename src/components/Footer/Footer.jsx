@@ -4,7 +4,10 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
-  FaYoutube
+  FaYoutube,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
 } from "react-icons/fa";
 
 import "./Footer.css";
@@ -13,12 +16,10 @@ import logo from "../../assets/stackly logo.webp";
 function Footer() {
   return (
     <footer className="footer">
-
       <div className="footer-container">
 
-        {/* Logo Section */}
+        {/* Brand */}
         <div className="footer-brand">
-
           <Link to="/">
             <img
               src={logo}
@@ -28,63 +29,61 @@ function Footer() {
           </Link>
 
           <p>
-            Empowering businesses through modern digital
-            innovation and scalable technology solutions.
+            Empowering businesses through modern digital innovation and
+            scalable technology solutions.
           </p>
 
-          {/* Social Icons */}
           <div className="social-icons">
-
-            <Link to="/facebook">
-              <FaFacebookF />
-            </Link>
-
-            <Link to="/instagram">
-              <FaInstagram />
-            </Link>
-
-            <Link to="/linkedin">
-              <FaLinkedinIn />
-            </Link>
-
-            <Link to="/twitter">
-              <FaTwitter />
-            </Link>
-
-            <Link to="/youtube">
-              <FaYoutube />
-            </Link>
-
+            <Link to="/facebook"><FaFacebookF /></Link>
+            <Link to="/instagram"><FaInstagram /></Link>
+            <Link to="/linkedin"><FaLinkedinIn /></Link>
+            <Link to="/twitter"><FaTwitter /></Link>
+            <Link to="/youtube"><FaYoutube /></Link>
           </div>
-
         </div>
 
         {/* Services */}
-        <div>
+        <div className="footer-links">
           <h4>Services</h4>
-
           <Link to="/consulting">Consulting</Link>
           <Link to="/cloud-solutions">Cloud Solutions</Link>
-          <Link to="/software-development">
-            Software Development
-          </Link>
+          <Link to="/software-development">Software Development</Link>
         </div>
 
         {/* Company */}
-        <div>
+        <div className="footer-links">
           <h4>Company</h4>
-
-          <Link to="/about">About</Link>
+          <Link to="/about">About Us</Link>
           <Link to="/careers">Careers</Link>
-          <Link to="/contact">Contact</Link>
+          
+        </div>
+
+        {/* Contact */}
+        <div className="footer-links">
+          <h4>Contact Us</h4>
+
+          <div className="contact-item">
+            <FaMapMarkerAlt />
+            <span>Hyderabad, India</span>
+          </div>
+
+          <div className="contact-item">
+            <FaPhoneAlt />
+            <span>+91 98765 43210</span>
+          </div>
+
+          <div className="contact-item">
+            <FaEnvelope />
+            <span>info@stackly.com</span>
+          </div>
         </div>
 
       </div>
+      <div className="footer-divider"></div>
 
       <div className="copyright">
-        © 2026 Stackly. All rights reserved.
+        © 2026 Stackly. All Rights Reserved.
       </div>
-
     </footer>
   );
 }

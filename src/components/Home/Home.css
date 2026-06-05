@@ -137,31 +137,37 @@ img {
 .hero {
   min-height: 100vh;
   padding: 160px 8% 120px;
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+
+  display: flex;
   align-items: center;
-  gap: 60px;
-  background: linear-gradient(135deg, #f8fafc 0%, #edf2ff 100%);
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
 }
 
 .hero h1 {
   font-size: clamp(2.8rem, 5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.15;
-  color: var(--clr-heading);
-  letter-spacing: -1.5px;
+  color: #fff;
 }
 
 .hero h1 span {
-  display: block;
-  color: var(--clr-primary);
+  color: #00c896;
 }
 
 .hero p {
   margin: 28px 0 40px;
   font-size: clamp(1.05rem, 1.25vw, 1.25rem);
   line-height: 1.8;
-  color: var(--clr-body);
+  color: rgba(255,255,255,0.9);
+}
+
+.tag {
+  color: #00c896;
 }
 
 .hero-buttons {
