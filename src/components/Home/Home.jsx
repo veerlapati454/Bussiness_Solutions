@@ -41,7 +41,7 @@ const handleSubmit = (e) => {
   }}
 >
   <div className="hero-content">
-    <span className="tag">BUSINESS SOLUTIONS</span>
+    
 
     <h1>
       Accelerate Your Business

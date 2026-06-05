@@ -1,47 +1,271 @@
+/* ============================================================
+   NOTFOUND.CSS — 404 Page | Obsidian / Gold design system
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap');
+
+/* ── Keyframes ─────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glitchTop {
+  0%, 100% { clip-path: inset(0 0 90% 0); transform: translate(-4px, -2px); }
+  20%       { clip-path: inset(10% 0 70% 0); transform: translate(4px, 2px); }
+  40%       { clip-path: inset(30% 0 50% 0); transform: translate(-3px, 0); }
+  60%       { clip-path: inset(60% 0 20% 0); transform: translate(3px, -2px); }
+  80%       { clip-path: inset(80% 0 5%  0); transform: translate(-2px, 2px); }
+}
+
+@keyframes glitchBot {
+  0%, 100% { clip-path: inset(80% 0 0 0); transform: translate(4px, 2px); }
+  20%       { clip-path: inset(60% 0 10% 0); transform: translate(-4px, -2px); }
+  40%       { clip-path: inset(40% 0 30% 0); transform: translate(3px, 2px); }
+  60%       { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 0); }
+  80%       { clip-path: inset(5%  0 80% 0); transform: translate(2px, -2px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+@keyframes orbPulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1);   opacity: 0.6; }
+  50%       { transform: translate(-50%, -50%) scale(1.15); opacity: 1;   }
+}
+
+@keyframes scanline {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* ── Layout ────────────────────────────────────────────────── */
 .notfound {
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-
-  background:
-  linear-gradient(
-  135deg,
-  #111827,
-  #1e293b
-  );
-
-  color: white;
+  justify-content: center;
   text-align: center;
+  padding: 40px 24px;
+  background: #080c14;
+  font-family: 'DM Sans', sans-serif;
+  position: relative;
+  overflow: hidden;
 }
 
+/* Deep radial glow behind everything */
+.notfound::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(
+    circle,
+    rgba(200, 151, 58, 0.07) 0%,
+    rgba(79, 142, 247, 0.04) 40%,
+    transparent 70%
+  );
+  transform: translate(-50%, -50%);
+  animation: orbPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Scanline sweep */
+.notfound::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(200, 151, 58, 0.15),
+    rgba(200, 151, 58, 0.4),
+    rgba(200, 151, 58, 0.15),
+    transparent
+  );
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── 404 number ────────────────────────────────────────────── */
 .notfound h1 {
-  font-size: 10rem;
-  font-weight: 900;
-  color: #2563eb;
+  position: relative;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(7rem, 22vw, 16rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: transparent;
+
+  /* Gold gradient fill */
+  background: linear-gradient(
+    135deg,
+    #6a4f1a 0%,
+    #c8973a 35%,
+    #e6b860 55%,
+    #c8973a 75%,
+    #6a4f1a 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation:
+    shimmer 4s linear infinite,
+    float 5s ease-in-out infinite,
+    fadeUp 0.8s 0.1s cubic-bezier(0.4,0,0.2,1) both;
+
+  z-index: 1;
+  user-select: none;
 }
 
+/* Glitch pseudo-layers */
+.notfound h1::before,
+.notfound h1::after {
+  content: '404';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  pointer-events: none;
+}
+
+.notfound h1::before {
+  background: linear-gradient(135deg, #4f8ef7, #7ab3ff);
+  background-size: 200% auto;
+  animation: glitchTop 5s steps(1) infinite;
+  animation-delay: 2s;
+}
+
+.notfound h1::after {
+  background: linear-gradient(135deg, #c8973a, #e6b860);
+  background-size: 200% auto;
+  animation: glitchBot 5s steps(1) infinite;
+  animation-delay: 2.15s;
+}
+
+/* ── Divider ───────────────────────────────────────────────── */
+.notfound h1 + h2::before {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(200,151,58,0.6), transparent);
+  margin: 0 auto 20px;
+}
+
+/* ── Heading ───────────────────────────────────────────────── */
 .notfound h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.notfound p {
-  color: #94a3b8;
-  margin-bottom: 30px;
-}
-
-.notfound a {
-  text-decoration: none;
-
-  padding: 15px 35px;
-
-  border-radius: 10px;
-
-  background: #2563eb;
-  color: white;
-
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
   font-weight: 600;
+  color: #eef2ff;
+  letter-spacing: 0.01em;
+  margin-bottom: 16px;
+  animation: fadeUp 0.8s 0.3s cubic-bezier(0.4,0,0.2,1) both;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Body text ─────────────────────────────────────────────── */
+.notfound p {
+  font-size: 0.95rem;
+  color: #8fa3c0;
+  line-height: 1.7;
+  max-width: 340px;
+  margin-bottom: 44px;
+  animation: fadeUp 0.8s 0.45s cubic-bezier(0.4,0,0.2,1) both;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Back to Home link ─────────────────────────────────────── */
+.notfound a {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #080c14;
+  padding: 13px 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #c8973a 0%, #e8a835 100%);
+  box-shadow: 0 6px 28px rgba(200, 151, 58, 0.3);
+  overflow: hidden;
+  animation: fadeUp 0.8s 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+  transition:
+    transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow 0.3s ease;
+}
+
+/* Arrow icon via pseudo */
+.notfound a::before {
+  content: '←';
+  font-size: 16px;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* Shine sweep */
+.notfound a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent 0%,
+    rgba(255,255,255,0.22) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.notfound a:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(200, 151, 58, 0.45);
+}
+
+.notfound a:hover::before { transform: translateX(-4px); }
+.notfound a:hover::after  { transform: translateX(100%); }
+
+.notfound a:active { transform: translateY(0); }
+
+/* ── Subtle grid texture ───────────────────────────────────── */
+.notfound > * { position: relative; z-index: 1; }
+.notfound {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .notfound h1 { font-size: 9rem; }
+  .notfound h2 { font-size: 1.5rem; }
 }
